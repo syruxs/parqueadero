@@ -1,0 +1,139 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+	background-image: url("../img/wallpaperbetter_admin.jpg");
+	background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+}
+#contentLeft {
+ z-index: 10;
+ width: 20%;
+ height:auto;
+ min-height:100%;
+ position:absolute;
+ top: 48px;
+ left: 0;
+ background-color: #283c51;
+ -moz-box-shadow: 3px 3px 15px #000;
+-ms-box-shadow: 3px 3px 15px #000;
+-webkit-box-shadow:  3px 3px 15px #000;
+-0-box-shadow: 3px 3px 15px #000;
+box-shadow:  3px 3px 15px #000;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption, tbody, tfoot, thead, th, article, aside, canvas, details, embed, figure, nav, figcaption, footer, header, hgroup, menu, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline
+}
+.menu{
+	float: left;
+	width: 20%;
+	height: 100vh;
+	background-color: #283c51;
+}
+nav {
+	float: left;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { 
+	display: block;
+}
+ol, ul { list-style: none }
+blockquote, q { quotes: none }
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none
+}
+a { 
+	text-decoration: none; 
+}
+.nav a, .nav label {
+	display: block;
+	padding: .85rem;
+	color: #adadad;
+	border-bottom: solid 1px #395673;
+	background: #283c51;
+	box-shadow: inset 0 -1px #1d1d1d;
+	-webkit-transition: all .25s ease-in;
+	transition: all .25s ease-in;
+}
+.nav a:focus, .nav a:hover, .nav label:focus, .nav label:hover {
+	color: #fff;
+	background: #999;
+}
+.nav label { 
+	cursor: pointer; 
+}
+.group-list a, .group-list label {
+	padding-left: 2rem;
+	background: #17232f;
+	box-shadow: inset 0 -1px #373737;
+	border-bottom: 1px dotted #233547;
+}
+.group-list a:focus, .group-list a:hover, .group-list label:focus, .group-list label:hover {     
+	background: #999;
+ }
+.sub-group-list a, .sub-group-list label {
+  padding-left: 4rem;
+  background: #353535;
+  box-shadow: inset 0 -1px #474747;
+}
+.sub-group-list a:focus, .sub-group-list a:hover, .sub-group-list label:focus, .sub-group-list label:hover {     
+	background: #999;
+ }
+.sub-sub-group-list a, .sub-sub-group-list label {
+  padding-left: 6rem;
+  background: #454545;
+  box-shadow: inset 0 -1px #575757;
+}
+.sub-sub-group-list a:focus, .sub-sub-group-list a:hover, .sub-sub-group-list label:focus, .sub-sub-group-list label:hover { 
+	background: #333333; 
+}
+.group-list, .sub-group-list, .sub-sub-group-list {
+  height:auto;
+  min-height:100%;
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: max-height .5s ease-in-out;
+  transition: max-height .5s ease-in-out;
+}
+.nav__list input[type=checkbox]:checked + label + ul { /* reset the height when checkbox is checked */
+max-height: 5000px; }
+label > span {
+  float: right;
+  -webkit-transition: -webkit-transform .65s ease;
+  transition: transform .65s ease;
+}
+.nav__list input[type=checkbox]:checked + label > span {
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.container {
+	position:  relative;
+	top: 5px;
+	background-color: #ffffffc1;
+	width: 75%;
+	min-width: 500px;
+	height: 90vh;
+	min-height: 200px;
+	margin: 20px;
+	padding: 10px;
+	margin-left: 320px;
+}
+#modificar_ex{
+	width: 100%;
+	height: auto;
+	padding: 5px;
+	border-rad: 10px;
+}
+#titulo{
+    width: 100%;
+    border-bottom: 1px solid rgb(246, 249, 247);
+}

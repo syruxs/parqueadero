@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="AbstractFrameReflower.php" server="p-s.cl/public_html/" local="132994371915680317" remote="132994380600000000" Dst="1" />
+<file name="Block.php" server="p-s.cl/public_html/" local="132994371918054404" remote="132994380600000000" Dst="1" />
+<file name="Image.php" server="p-s.cl/public_html/" local="132994371916806687" remote="132994380600000000" Dst="1" />
+<file name="Inline.php" server="p-s.cl/public_html/" local="132994371921045993" remote="132994380600000000" Dst="1" />
+<file name="ListBullet.php" server="p-s.cl/public_html/" local="132994371921929609" remote="132994380600000000" Dst="1" />
+<file name="NullFrameReflower.php" server="p-s.cl/public_html/" local="132994371923855016" remote="132994380600000000" Dst="1" />
+<file name="Page.php" server="p-s.cl/public_html/" local="132994371926479042" remote="132994380600000000" Dst="1" />
+<file name="Table.php" server="p-s.cl/public_html/" local="132994371929321755" remote="132994380600000000" Dst="1" />
+<file name="TableCell.php" server="p-s.cl/public_html/" local="132994371928994964" remote="132994380600000000" Dst="1" />
+<file name="TableRow.php" server="p-s.cl/public_html/" local="132994371931738750" remote="132994380600000000" Dst="1" />
+<file name="TableRowGroup.php" server="p-s.cl/public_html/" local="132994371934325188" remote="132994380600000000" Dst="1" />
+<file name="Text.php" server="p-s.cl/public_html/" local="132994371935444345" remote="132994380600000000" Dst="1" />
+</dwsync>

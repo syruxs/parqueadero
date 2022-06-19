@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Crimson Pro', serif;
+}
+	
+body{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+	height: auto;
+    background-image: url(../img/wallpaperbetter.jpg);
+    position: absolute;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    padding: 20px;
+		
+}
+.left-container {
+    position: absolute;
+	top: 50px;
+    width: 40%;
+    height: auto;
+    background: none;
+    padding: 20px;
+}
+
+.right-container {
+    position: relative;
+	top: 50px;
+    float: right;
+    margin-right: 10px;
+    width: 55%;
+    height: auto;
+    padding: 20px;
+}
+.left-container form {
+    width: 100%;
+    height: auto;
+    color: white;
+    padding: 20px;
+    background-color: rgba(139, 0, 0, 0.527);
+}
+.othe {
+    border: 1px solid #fff;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+}
+.left-container form input[type='submit']{
+	background-color: #48e;
+	color: #fff;
+	width: calc(80% - 20px);
+	margin: 0 10%;
+	margin-top: 22px;
+	border: none;
+    padding: 10px;
+}
+.left-container form input[type='submit']:hover{
+	box-shadow: 3px 0px 30px rgba(163,163,163, 1);
+}
+.right-container .seach{
+    background-color: rgba(34, 142, 41, 0.8);
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    color: white;
+}
+.right-container .seach .buscar{
+    background-color: #48e;
+	color: #fff;
+    border: none;
+    padding: 5px;
+}
+.resulta{
+    background: rgba(34, 142, 41, 0.8);
+    position: relative;
+    margin-top: 10px;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    color: white;
+    font-size:x-large;
+}
+.resulta label {
+    border-bottom: 1px solid rgb(5, 247, 45);
+}
+.right-container .resulta input[type='submit']{
+	background-color: #48e;
+	color: #fff;
+	width: calc(80% - 20px);
+	margin: 0 10%;
+	margin-top: 10px;
+	border: none;
+    padding: 0px;
+}
+.right-container .resulta input[type='submit']:hover{
+	box-shadow: 3px 0px 30px rgba(163,163,163, 1);
+}
+.contenedor-informes{
+    position: relative;
+    top: 55px;
+    width: 100%;
+    height:auto;
+    color: white;
+    padding: 20px;
+    background-color: rgba(139, 0, 0, 0.527);
+    box-shadow: 3px 0px 30px rgba(163,163,163, 1);
+}
+#titulo{
+    width: 100%;
+    border-bottom: 1px solid rgb(246, 249, 247);
+}
+.buscar_button{
+    background-color: #48e;
+	color: #fff;
+    border: none;
+    padding: 3px;  
+}
+.buscar_button:hover{
+    box-shadow: 3px 0px 30px rgba(163,163,163, 1);
+}
+
+@media screen and (max-width: 800px){
+    .left-container{
+		top: 50px;
+        width: 100%;
+        background: none;
+        height:auto;
+    }
+    .right-container{
+		top: 700px;
+		width: 100%;
+		height: auto;
+		padding: 0px;
+		padding-left: 20px;
+		margin-right: 0px;
+		background: none;
+    }  
+	body{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+	height: auto;
+    background-image: url(../img/wallpaperbetter.jpg);
+    position: absolute;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    padding: 10px;
+		
+	}
+}

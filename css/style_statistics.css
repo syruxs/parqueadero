@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Crimson Pro', serif;
+}
+body{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+	height: auto;
+    background-image: url(../img/wallpaperbetter.jpg);
+    position: absolute;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    padding: 20px;
+}
+#grafica{
+	position: relative;
+	margin-right: 50px;
+	width: 100%;
+	height: auto;
+}
+.contenedor{
+	position: relative;
+	top: 50px;
+	display: flex;
+	flex-wrap: wrap;
+}
+.in-flex {
+	flex: 1;
+	min-width: 250px;
+}
+.in-flex:first-child{
+	flex: 2;
+	padding: 5px;
+	margin: 10px;
+	margin-bottom: 0px;
+}
+.in-flex div {
+	padding: 5px;
+	margin: 10px;
+}
