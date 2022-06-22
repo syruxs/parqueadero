@@ -125,7 +125,7 @@ $s=explode(',',$ver);
 					<label>Cliente : <?php echo $cliente;?></label>
 				</td>
 				<td>
-					<label>RUT o DNI : <?php echo ?></label>
+					<label>Chofer <?php echo $ch;?></label>
 				</td>
 			</tr>
 		</table>

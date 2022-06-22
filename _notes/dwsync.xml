@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name=".htaccess" server="p-s.cl/public_html/" local="132994371528358872" remote="132994381200000000" Dst="1" />
+<file name=".htaccess" server="p-s.cl/public_html/" local="133002824400000000" remote="133002824400000000" Dst="1" />
 <file name="admin.php" server="p-s.cl/public_html/" local="132999839221933086" remote="132999838800000000" Dst="1" />
 <file name="error_log" server="p-s.cl/public_html/" local="132988396800000000" remote="132988396800000000" Dst="1" />
 <file name="estadistica.php" server="p-s.cl/public_html/" local="132988441200000000" remote="132988441200000000" Dst="1" />
 <file name="home.php" server="p-s.cl/public_html/" local="132988447200000000" remote="132988447200000000" Dst="1" />
-<file name="index.php" server="p-s.cl/public_html/" local="132970953600000000" remote="132970953600000000" Dst="1" />
+<file name="index.php" server="p-s.cl/public_html/" local="133003344922253688" remote="133003344600000000" Dst="1" />
 <file name="printer.php" server="p-s.cl/public_html/" local="132981312600000000" remote="132981312600000000" Dst="1" />
 <file name="save_in.php" server="p-s.cl/public_html/" local="132988692600000000" remote="132988692600000000" Dst="1" />
 <file name="save_out.php" server="p-s.cl/public_html/" local="132986070000000000" remote="132986070000000000" Dst="1" />
 <file name="statistics.php" server="p-s.cl/public_html/" local="132988441800000000" remote="132988441800000000" Dst="1" />
-<file name="valid.php" server="p-s.cl/public_html/" local="132970405200000000" remote="132970405200000000" Dst="1" />
-<file name="validarcampos.php" server="p-s.cl/public_html/" local="132988549800000000" remote="132988549800000000" Dst="1" />
+<file name="valid.php" server="p-s.cl/public_html/" local="133003376047018702" remote="133003375800000000" Dst="1" />
+<file name="consulta.php" server="p-s.cl/public_html/" local="133003365411221830" remote="133003365000000000" Dst="1" />
+<file name="valid_consulta.php" server="p-s.cl/public_html/" local="133003386226621001" remote="133003386000000000" Dst="1" />
+<file name="ver_consulta.php" server="p-s.cl/public_html/" local="133003366200000000" remote="133003366200000000" Dst="1" />
 </dwsync>
