@@ -25,51 +25,31 @@ $s=explode(',',$ver);
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
 		<link href="../css/bootstrap.min.css" rel="stylesheet">
 <title>Abono</title>
-		<script type="text/javascript">
-		document.addEventListener("DOMContentLoaded", function() {
-  		document.getElementById("formulario").addEventListener('submit', validarFormulario); 
-		});
-
-		function validarFormulario(evento) {
-		  evento.preventDefault();
-			indice = document.getElementById("filter").selectedIndex;
-			i = document.getElementById("tpago").selectedIndex;
-			
-			if( indice == null || indice == 0 ) {
-				alert('Seleccione un Cliente');
-				document.getElementById("filter").focus();
-				return false;
-			}
-			if( i == null || i == 0 ) {
-				alert('Por favor seleccione un tipo de pago');
-				document.getElementById("tpago").focus();
-				return false;
-			}
-			if(document.getElementById("date1").value == false){
-				alert('Seleccione la fecha de inicio');
-				document.getElementById("date1").focus();
-				return false;
-			}
-			if(document.getElementById("date2").value == false){
-				alert('Seleccione la fecha de final');
-				document.getElementById("date2").focus();
-				return false;
-			}
-			if(document.getElementById("date1").value > document.getElementById("date2").value){
-				alert("¡El formato es incorrecto! \n Fecha Incio NO puede ser mayor que Fecha Final");
-			 	document.getElementById("date1").focus();
-				return false;  
-			}
-		  this.submit();
-		}
-		
-		</script>
 		<script src="../js/jquery-3.6.0.js"></script>
 		<script>
 		$(document).ready(function () {
 			$(this).val(jQuery.trim($(this).val()));
-				$('#patente').focus();
-       				$('#contenedor').show('slow'); 
+				$('#abono').focus();
+       				$('#contenedor').show('slow');
+		    $("#formulario").submit(function () {
+				if($("#abono").val().length < 1) {
+					alert("Por favor el valor a abonar!");
+						$("#abono").focus();
+							return false;
+				}
+    		});
+			$("#abono").on({
+				"focus": function (event) {
+					$(event.target).select();
+				},
+				"keyup": function (event) {
+					$(event.target).val(function (index, value ) {
+						return value.replace(/\D/g, "")
+									.replace(/([0-9])([0-9]{0})$/, '$1')
+									.replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ".");
+					});
+				}
+			});
 		});
 		</script>
 		<style>
@@ -113,22 +93,96 @@ $s=explode(',',$ver);
 				$abono=$result['abono'];
 				$saldo=$result['saldo'];
 			}
+				if($money == "PESO CHILENO"){
+					$simbol="$";
+				}else{
+					$simbol="USD";
+				}
+				if($saldo =="0"){
+					echo "<script type=\"text/javascript\">alert(\"No existen saldos pendientes.\");</script>";
+					echo "<script type=\"text/javascript\">window.history.back(-1);<script>";
+				}
 		?>
 		<h3 class="animate__animated animate__backInLeft" id="titulo">Ingresar Abono</h3>
 		<br>
-		<table width="100%" border="1" cellpadding="4" cellspacing="4" class="animate__animated animate__backInLeft">
+		<form action="save_abono.php" method="post" id="formulario" name="formulario">
+		<table width="100%" border="0" cellpadding="4" cellspacing="4" class="animate__animated animate__backInLeft">
 			<tr>
-				<td><label>Fecha : &nbsp;<?php echo $date; ?> de Expediente N° <?php echo $id_venta;?></label></td>
+				<td colspan="3"><label><b>Fecha : &nbsp;<?php echo $date; ?> de Expediente N° <?php echo $id_venta;?></b></label></td>
 			</tr>
 			<tr>
 				<td>
 					<label>Cliente : <?php echo $cliente;?></label>
 				</td>
 				<td>
-					<label>Chofer <?php echo $ch;?></label>
+					<label>Chofer : <?php echo $ch;?></label>
+				</td>
+				<td>
+					<label>Observaciones : <?php echo $ob;?></label>
 				</td>
 			</tr>
+			<tr>
+				<td colspan="3">
+					<b>Datos del Servicio</b>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Servicio : <?php echo $ser; ?></label>
+				</td>
+				<td>
+					<label>Descripción : <?php echo $des;?></label>
+				</td>
+				<td>
+					<label>Tipo de Moneda : <?php echo $money;?></label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Valor Unitario : <?php echo $simbol." ".number_format($val,0,',','.');?></label>
+				</td>
+				<td>
+					<label>Cantidad : <?php echo $cant;?></label>
+				</td>
+				<td>
+					<label>Sub Total : <?php echo $simbol." ".$val*$cant;?></label>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<b>Condiciones de Pago</b>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Tipo de Pago : <?php echo $pago;?></label>
+				</td>
+				<td>
+					<label>Total : <?php echo $simbol." ".number_format($total,0,',','.');?></label>
+				</td>
+				<td>
+					<label>Saldo : <?php echo $simbol." ".number_format($saldo,0,',','.');?></label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>Ingresar Abono :</label>
+				</td>
+				<td>
+					<input type="text" name="abono" id="abono" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" class="form-control" autofocus required autocomplete="off">
+				</td>
+				<td>
+					<input type="submit" value="GUARDAR">
+				</td>
+				<td>
+					<input type="hidden" value="<?php echo $id_venta;?>" name="id" id="id">
+					<input type="hidden" value="<?php echo $saldo;?>" name="sal" id="sal">
+					<input type="hidden" value="<?php echo $total;?>" name="tot" id="tot">
+				</td>
+
+			</tr>
 		</table>
+		</form>
 	</div>
 </body>
 </html>

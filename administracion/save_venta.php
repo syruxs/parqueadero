@@ -29,7 +29,6 @@ $ser=$_POST['servicio'];
 $des=$_POST['neuma'];
 $Ob=$_POST['decrip'];
 $vu=$_POST['valorunitario'];
-$vu=trim(str_replace(array('-','.'), '', $vu));
 $cant=$_POST['stock'];
 
 $pago=$_POST['pago'];	
@@ -45,7 +44,7 @@ if($des == "0"){
 	if($vu == ""){
 	$b_tire=mysqli_query($conn, "SELECT * FROM `tire`  WHERE id='$des'");
 	while($rst=mysqli_fetch_array($b_tire)){
-		$vunit=$rst['valorVenta'];
+		echo $vunit=$rst['valorVenta'];
 		$Modelo=$rst['modelo'];
 		$Marca=$rst['marca'];
 		$stock=$rst['stock'];
@@ -54,12 +53,14 @@ if($des == "0"){
 		}
 	$descontar="UPDATE `tire` SET `stock` = '$Stock'  WHERE `tire`.`id` = ".$des."";
 	$ins=mysqli_query($conn, $descontar);
-	}else {
+	}else{
 		$vunit = $vu;
 	}
 		$git = $Nombre;
 }
-
+if($vu !=""){
+	echo $vunit = $vu;
+}
 
 
 if($pago == "CONTADO"){

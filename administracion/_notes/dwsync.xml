@@ -24,8 +24,9 @@
 <file name="save_tire.php" server="p-s.cl/public_html/" local="132994371603005535" remote="132994378800000000" Dst="1" />
 <file name="vent.php" server="p-s.cl/public_html/" local="132999931051169476" remote="132999930600000000" Dst="1" />
 <file name="ventas.php" server="p-s.cl/public_html/" local="132994371608535027" remote="132994378800000000" Dst="1" />
-<file name="save_venta.php" server="p-s.cl/public_html/" local="132994790512541212" remote="132994790400000000" Dst="1" />
+<file name="save_venta.php" server="p-s.cl/public_html/" local="133005920420076931" remote="133005920400000000" Dst="1" />
 <file name="buscar_venta.php" server="p-s.cl/public_html/" local="133001352545875401" remote="133001352000000000" Dst="1" />
 <file name="delete_edith_cliente.php" server="p-s.cl/public_html/" local="133000693621486459" remote="133000693200000000" Dst="1" />
-<file name="abono.php" server="p-s.cl/public_html/" local="133003273691715794" remote="133003273200000000" Dst="1" />
+<file name="abono.php" server="p-s.cl/public_html/" local="133005900908843396" remote="133005900600000000" Dst="1" />
+<file name="save_abono.php" server="p-s.cl/public_html/" local="133005899463101428" remote="133005899400000000" Dst="1" />
 </dwsync>

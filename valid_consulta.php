@@ -18,7 +18,7 @@ if($filas){
 
 			}
 	session_start();
-	$_SESSION['cliente']=$VentaEncontada;
+	$_SESSION['cliente']=$cliente;
 	header("location:ver_consulta.php");
 }else{
 	include("consulta.php");
