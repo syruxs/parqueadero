@@ -32,15 +32,21 @@ $s=explode(',',$ver);
 					}
 				
 				$valorFinal=$n * $Dolar; 
+			//echo "<script type=\"text/javascript\">var ValorTotal = document.getElementById('valorTotal');
+		//ValorTotal.value='".number_format($valorFinal,0,'','.')."';</script>";
 			echo '<input type="text" class="form-control" name="valorTotal" id="valorTotal" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" value="'.number_format($valorFinal,0,'','.').'"required>';
 			}else {
 				
 				$valorFinal=$n;
+			//echo "<script type=\"text/javascript\">var ValorTotal = document.getElementById('valorTotal');
+		//ValorTotal.value='".number_format($valorFinal,0,'','.')."';</script>";
 			echo '<input type="text" class="form-control" name="valorTotal" id="valorTotal" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" value="'.number_format($valorFinal,0,'','.').'"required>';			
 			}
 
 		}else {
 			$valorFinal=$n / $m;
+			//echo "<script type=\"text/javascript\">var ValorTotal = document.getElementById('valorTotal');
+		//ValorTotal.value='".number_format($valorFinal,0,'','.')."';</script>";
 			echo '<input type="text" class="form-control" name="valorTotal" id="valorTotal" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" value="'.number_format($valorFinal,0,'','.').'"required>';			
 		}
 	}

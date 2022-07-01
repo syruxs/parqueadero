@@ -41,27 +41,21 @@ $user=$ver;
 if($des == "0"){
 	$git = $Ob;
 }else{
-	if($vu == ""){
+	
 	$b_tire=mysqli_query($conn, "SELECT * FROM `tire`  WHERE id='$des'");
 	while($rst=mysqli_fetch_array($b_tire)){
-		echo $vunit=$rst['valorVenta'];
+		$vunit = $vu;
 		$Modelo=$rst['modelo'];
 		$Marca=$rst['marca'];
 		$stock=$rst['stock'];
 		$Stock=$stock - $cant;
 		$Nombre=$Modelo." ".$Marca;
-		}
-	$descontar="UPDATE `tire` SET `stock` = '$Stock'  WHERE `tire`.`id` = ".$des."";
-	$ins=mysqli_query($conn, $descontar);
-	}else{
-		$vunit = $vu;
 	}
-		$git = $Nombre;
+	$descontar="UPDATE `tire` SET `stock` = '$Stock'  WHERE `id` = ".$des."";
+	$ins=mysqli_query($conn, $descontar);
+	$vunit = $vu;
+	$git = $Nombre;
 }
-if($vu !=""){
-	echo $vunit = $vu;
-}
-
 
 if($pago == "CONTADO"){
 	$abono = $total;

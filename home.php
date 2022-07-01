@@ -164,7 +164,7 @@ $s=explode(',',$ver);
                 $start = strtotime($originalDate);
                 $end = strtotime($date_actual);
                 $minutes = ($end - $start) / 60;
-                $buscar_valor=mysqli_query($conn, "SELECT * from `valores` order by abs($minutes-`dias`) LIMIT 1");
+				$buscar_valor=mysqli_query($conn, "SELECT * from `valores` order by abs($minutes-`dias`) LIMIT 1");
 					while($valor_encontrado=mysqli_fetch_array($buscar_valor)){
 						$id_cercano=$valor_encontrado['id'];
 						$dia_cercano=$valor_encontrado['dias'];
@@ -190,13 +190,18 @@ $s=explode(',',$ver);
 		  <?php echo '<input type="text" value="'.$Obs_result.'" id="obser" name="obser" class="form-control">';?><br>
 		  <label>Fecha Entrada: &nbsp; <?php echo $newDate;?> &nbsp; Hora de Entrada: &nbsp; <?php echo $newTime; ?></label><br>
 		 <?php echo $hasta_hoy." Valor actual $".number_format($Value_ok,0,',','.')."";?><br>
-		  <div class="input-group">
+		  <!--<div class="input-group">-->
 
             <label>Monto Cancelado:&nbsp;</label> 
 
             <?php echo '<input type="text" value="'.$Value_ok.'" id="cancelado" name="cancelado" class="form-control" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required>';?>
-
-            </div>
+			<hr>
+			<label>Moroso: &nbsp;</label>
+			  <select name="moroso" id="moroso">
+			  		<option value="NO">NO</option>
+				  	<option value="SI">SI</option>
+			  </select>
+            <!--</div>-->
 <table width="100%" border="0" cellpadding="3" cellspacing="1">
 		<tr>
 			<td width="50%" align="center">

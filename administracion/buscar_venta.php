@@ -155,19 +155,25 @@ $s=explode(',',$ver);
               </tr>
     <?php
     	error_reporting(0);
-		$Cliente=$_POST['filter'];
-		$tPago=$_POST['tpago'];
+		echo $Cliente=$_POST['filter'];
+		echo $tPago=$_POST['tpago'];
 
         
         $date1 = date("Y-m-d H:i:s", strtotime($_POST['date1']));
         $date2 = date("Y-m-d H:i:s", strtotime($_POST['date2']));
 	
-			if($Cliente == "TODOS" || $tPago == "TODOS"){
+			if($Cliente == "TODOS" && $tPago == "TODOS"){
 				
-				$sql = mysqli_query($conn, "SELECT * FROM `ventas` where date BETWEEN '$date1' AND '$date2' ORDER BY id ASC");		
-			}else{
-				$sql = mysqli_query($conn, "SELECT * FROM `ventas` where cliente='$Cliente' and pago='$tPago' and date BETWEEN '$date1' AND '$date2' ORDER BY id ASC");
+				$sql = mysqli_query($conn, "SELECT * FROM `ventas` WHERE date BETWEEN '$date1' AND '$date2' ORDER BY id ASC");		
 			}
+			if($Cliente != "TODOS" && $tPago == "TODOS"){
+				$sql = mysqli_query($conn, "SELECT * FROM `ventas` WHERE cliente='$Cliente' AND date BETWEEN '$date1' AND '$date2' ORDER BY id ASC");
+			}
+			if($Cliente != "TODOS" && $tPago != "TODOS"){
+				$sql = mysqli_query($conn, "SELECT * FROM `ventas` WHERE cliente='$Cliente' AND pago='$tPago' AND date BETWEEN '$date1' AND '$date2' ORDER BY id ASC");				
+			}
+			
+			/*si no existen datos*/
 			
 			if(mysqli_num_rows($sql) == 0){
 				echo '<tr><td colspan="14">No hay datos. Por favor seleccione una opción</td></tr>';

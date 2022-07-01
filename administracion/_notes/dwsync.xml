@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
 <file name="buscar.php" server="p-s.cl/public_html/" local="132999838485741369" remote="132999838200000000" Dst="1" />
-<file name="date.php" server="p-s.cl/public_html/" local="132999941011956006" remote="132999940800000000" Dst="1" />
-<file name="datos.php" server="p-s.cl/public_html/" local="132994792553300988" remote="132994792200000000" Dst="1" />
+<file name="date.php" server="p-s.cl/public_html/" local="133011071488723519" remote="133011071400000000" Dst="1" />
+<file name="datos.php" server="p-s.cl/public_html/" local="133008469632206809" remote="133008469200000000" Dst="1" />
 <file name="delete.php" server="p-s.cl/public_html/" local="132994371569621343" remote="132994378200000000" Dst="1" />
 <file name="delete_file.php" server="p-s.cl/public_html/" local="132994371570590943" remote="132994378200000000" Dst="1" />
 <file name="detalle.php" server="p-s.cl/public_html/" local="132999894139511755" remote="132999894000000000" Dst="1" />
@@ -22,10 +22,10 @@
 <file name="save_doc.php" server="p-s.cl/public_html/" local="132994371600600555" remote="132994378800000000" Dst="1" />
 <file name="save_moneda.php" server="p-s.cl/public_html/" local="132994371601881800" remote="132994378800000000" Dst="1" />
 <file name="save_tire.php" server="p-s.cl/public_html/" local="132994371603005535" remote="132994378800000000" Dst="1" />
-<file name="vent.php" server="p-s.cl/public_html/" local="132999931051169476" remote="132999930600000000" Dst="1" />
+<file name="vent.php" server="p-s.cl/public_html/" local="133011071652113385" remote="133011071400000000" Dst="1" />
 <file name="ventas.php" server="p-s.cl/public_html/" local="132994371608535027" remote="132994378800000000" Dst="1" />
-<file name="save_venta.php" server="p-s.cl/public_html/" local="133005920420076931" remote="133005920400000000" Dst="1" />
-<file name="buscar_venta.php" server="p-s.cl/public_html/" local="133001352545875401" remote="133001352000000000" Dst="1" />
+<file name="save_venta.php" server="p-s.cl/public_html/" local="133011580750046263" remote="133011580800000000" Dst="1" />
+<file name="buscar_venta.php" server="p-s.cl/public_html/" local="133010199557132791" remote="133010199600000000" Dst="1" />
 <file name="delete_edith_cliente.php" server="p-s.cl/public_html/" local="133000693621486459" remote="133000693200000000" Dst="1" />
 <file name="abono.php" server="p-s.cl/public_html/" local="133005900908843396" remote="133005900600000000" Dst="1" />
 <file name="save_abono.php" server="p-s.cl/public_html/" local="133005899463101428" remote="133005899400000000" Dst="1" />

@@ -28,7 +28,7 @@ $s=explode(',',$ver);
 		<script type="text/javascript">
 		document.addEventListener("DOMContentLoaded", function() {
 		document.getElementById("form").addEventListener('submit', validarFormulario); 
-		abo.style.display="none";
+		$("#abo").prop("disabled", true);
 		});
 			function validarFormulario(evento) {
 			  evento.preventDefault();
@@ -94,10 +94,12 @@ $s=explode(',',$ver);
 			const se = document.querySelector(".tipoSelector");
 			
 			if (n.value=="CREDITO"){
-				abo.style.display="block";
+				//abo.style.display="block";
+				$("#abo").prop("disabled", false);
 	
 			}else{
-				abo.style.display="none";
+				//abo.style.display="none";
+				$("#abo").prop("disabled", true);
 			}
 		}
 		</script>
@@ -260,9 +262,9 @@ $s=explode(',',$ver);
 				<div id="precio">
 				
 				</div>
-				<div id="precio-valor">
+				<!--<div id="precio-valor">-->
 				<input type="text" placeholder="Valor Unitario" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" name="valorunitario" id="valorunitario" class="form-control" autocomplete="off">
-				</div>
+				<!--</div>-->
 			</td>
 			<td>
 				<label>Cantidad:</label>
@@ -315,7 +317,8 @@ $s=explode(',',$ver);
 					<label>Total</label>
 				</td>
 				<td>
-					<div id="togeneral"></div>
+					<div id="togeneral">
+					</div>
 				</td>
 			</tr>
 			<tr>

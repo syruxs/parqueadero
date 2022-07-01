@@ -19,7 +19,9 @@ $s=explode(',',$ver);
 
 	while ($ver=mysqli_fetch_array($result)) {
 		
-		echo '<input type="text" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" name="valorunitario" id="valorunitario" class="form-control" value="'.$ver['valorVenta'].'">';
+		echo "<script type=\"text/javascript\">var InputValor = document.getElementById('valorunitario');
+		InputValor.value='".$ver['valorVenta']."';</script>";
+		//echo '<input type="text" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" name="valorunitario" id="valorunitario" class="form-control" value="'.$ver['valorVenta'].'">';
 		echo "<script type=\"text/javascript\">alert(\"Quedan N°".$ver['stock']." Neumaticos en stock\");</script>";
 	}
 ?>

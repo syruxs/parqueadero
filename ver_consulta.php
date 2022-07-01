@@ -6,6 +6,12 @@ session_start();
 date_default_timezone_set('America/Santiago');
 $ver=$_SESSION['cliente'];
     require("admin/conex.php");
+
+	$buscarCliente=mysqli_query($conn, "SELECT * FROM `clientes` WHERE doc='$ver'");
+	while($resultCliente=mysqli_fetch_array($buscarCliente)){
+		$Cliente=$resultCliente['nombre'];
+	}
+
 ?>
 <!doctype html>
 <html>
@@ -22,7 +28,7 @@ $ver=$_SESSION['cliente'];
 <body>
 	<div class="contend">
 	<div class="table-responsive">
-    	<table class="table table-striped table-hover" width="100%">
+    	<table class="table table-striped table-hover" width="100%" style="font-size: 12px;">
         	<tr>
             	<th>N°</th>
 				<th>Fecha</th>
@@ -36,83 +42,67 @@ $ver=$_SESSION['cliente'];
                 <th>T. Pago</th>
                 <th>T. Moneda</th>
                 <th>Total</th>
-                <th>Abono</th>
-                <th>Saldo</th>
+                <th>Abono Inicial</th>
+                <th>Saldo Actual</th>
               </tr>
-    <?php
-    	error_reporting(0);
-		$Cliente=$_POST['filter'];
-		$tPago=$_POST['tpago'];
-
-        
-        $date1 = date("Y-m-d H:i:s", strtotime($_POST['date1']));
-        $date2 = date("Y-m-d H:i:s", strtotime($_POST['date2']));
-	
-			if($Cliente == "TODOS" || $tPago == "TODOS"){
-				
-				$sql = mysqli_query($conn, "SELECT * FROM `ventas` where date BETWEEN '$date1' AND '$date2' ORDER BY id ASC");		
-			}else{
-				$sql = mysqli_query($conn, "SELECT * FROM `ventas` where cliente='$Cliente' and pago='$tPago' and date BETWEEN '$date1' AND '$date2' ORDER BY id ASC");
-			}
-			
-			if(mysqli_num_rows($sql) == 0){
-				
-				$buscarCliente="SELECT * FROM `clientes` WHERE doc='$ver'";
-				$resultado=mysqli_query($conn,$buscarCliente);
-				while($userCliente=mysqli_fetch_array($resultado)){
-					$ClienteVenta=$userCliente['nombre'];
-				}
-				
-				$Sql=mysqli_query($conn, "SELECT * FROM `ventas` where cliente='$ClienteVenta");
-				while($row = mysqli_fetch_array($Sql)){
-				echo '
-
+				<?php
+				$encontrarVenta=mysqli_query($conn, "SELECT * FROM `ventas` WHERE cliente='$Cliente' AND pago='CREDITO' AND saldo!='0'");
+				while($rstVenta=mysqli_fetch_array($encontrarVenta)){
+						$Id=$rstVenta['id'];
+						$Service=$rstVenta['servicio'];
+						$Detail=$rstVenta['descripcion'];
+						$Abono=$rstVenta['abono'];
+						$Total=$rstVenta['total'];
+						$Saldo=$Total-$Abono;
+						$Saldo=number_format($Saldo, 0, ',', '.');
+					echo '
 						  <tr>
-							<td><a href="abono.php?var='.$row['id'].'" id="a" name="a">'.$row['id'].'</a></td>
-							<td>'.date("d/m/Y", strtotime($row['date'])).'</td>
-							<td style="text-transform:capitalize; width: auto;">'.$row['cliente'].'</td>
-							<td style="text-transform:capitalize;">'.$row['chofer'].'</td>
-							<td>'.$row['observaciones'].'</td>
-							<td>'.$row['servicio'].'</td>
-							<td>'.$row['descripcion'].'</td>
-							<td align="right">$ '.number_format($row['valor'], 0, ',', '.').'</td>
-							<td align="center">'.$row['cantidad'].'</td>
-							<td>'.$row['pago'].'</td>
-							<td>'.$row['moneda'].'</td>
-							<td align="right">$ '.number_format($row['total'], 0, ',', '.').'</td>
-							<td align="right">$ '.number_format($row['abono'], 0, ',', '.').'</td>
-							<td align="right">$ '.number_format($row['saldo'], 0, ',', '.').'</td>
-						</tr>
-				';					
+							<td><a href="abono.php?var='.$rstVenta['id'].'" id="a" name="a">'.$rstVenta['id'].'</a></td>
+							<td>'.date("d/m/Y", strtotime($rstVenta['date'])).'</td>
+							<td style="text-transform:capitalize; width: auto;">'.$rstVenta['cliente'].'</td>
+							<td style="text-transform:capitalize;">'.$rstVenta['chofer'].'</td>
+							<td>'.$rstVenta['observaciones'].'</td>
+							<td>'.$rstVenta['servicio'].'</td>
+							<td>'.$rstVenta['descripcion'].'</td>
+							<td align="right">$ '.number_format($rstVenta['valor'], 0, ',', '.').'</td>
+							<td align="center">'.$rstVenta['cantidad'].'</td>
+							<td>'.$rstVenta['pago'].'</td>
+							<td>'.$rstVenta['moneda'].'</td>
+							<td align="right">$ '.number_format($rstVenta['total'], 0, ',', '.').'</td>
+							<td align="right">$ '.number_format($rstVenta['abono'], 0, ',', '.').'</td>
+							<td align="right">$ '.number_format($rstVenta['saldo'], 0, ',', '.').'</td>
+						</tr>					
+					';
 				}
-				
-			}else {
-				
-			while($row = mysqli_fetch_array($sql)){
-
-				echo '
-
-						  <tr>
-							<td><a href="abono.php?var='.$row['id'].'" id="a" name="a">'.$row['id'].'</a></td>
-							<td>'.date("d/m/Y", strtotime($row['date'])).'</td>
-							<td style="text-transform:capitalize; width: auto;">'.$row['cliente'].'</td>
-							<td style="text-transform:capitalize;">'.$row['chofer'].'</td>
-							<td>'.$row['observaciones'].'</td>
-							<td>'.$row['servicio'].'</td>
-							<td>'.$row['descripcion'].'</td>
-							<td align="right">$ '.number_format($row['valor'], 0, ',', '.').'</td>
-							<td align="center">'.$row['cantidad'].'</td>
-							<td>'.$row['pago'].'</td>
-							<td>'.$row['moneda'].'</td>
-							<td align="right">$ '.number_format($row['total'], 0, ',', '.').'</td>
-							<td align="right">$ '.number_format($row['abono'], 0, ',', '.').'</td>
-							<td align="right">$ '.number_format($row['saldo'], 0, ',', '.').'</td>
-						</tr>
-				';
-		}				
-			}
-
-	?>
+				?>
+		</table>
+		<label><b>Saldo de la Venta inicial : <?php echo $Saldo;?></b></label>
+		<hr/>
+		<label><b>Abonos Posteriores</b></label>
+		<table class="table table-striped table-hover" width="100%" style="font-size: 15px;">
+			<tr>
+				<th>Servicio</th>
+				<th>Detalle</th>
+				<th>Abono</th>
+				<th>Saldo</th>
+				<th>Fecha Abono</th>
+				<th>usuario</th>
+			</tr>
+			<?php
+				$buscarAbono=mysqli_query($conn, "SELECT * FROM `abono` WHERE id_venta='$Id'");
+					while($rstAbono=mysqli_fetch_array($buscarAbono)){
+						echo '
+							<tr>
+								<td>'.$Service.'</td>
+								<td>'.$Detail.'</td>
+								<td>'.number_format($rstAbono['abono'], 0, ',', '.').'</td>
+								<td>'.number_format($rstAbono['saldo'], 0, ',', '.').'</td>
+								<td>'.date("d-m-Y H:i:s", strtotime($rstAbono['date'])).'</td>
+								<td>'.$rstAbono['user'].'</td>
+							</tr>	
+						';
+					}
+			?>
 		</table>
 	</div>
 </body>
