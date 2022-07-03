@@ -81,6 +81,7 @@ $s=explode(',',$ver);
 					<li rel="administracion/doc_in.php"><a href="#">Ingresar Documentos</a></li>
 					<li rel=""><a href="#">Modificar Documentos</a></li>
 					<li rel="administracion/detalle.php"><a href="#">Resumen de Gastos</a></li>
+					<li rel="administracion/cierreMes.php"><a href="#">Cierre de Mes</a></li>
 				</ul>
 			</li>
 			<li>

@@ -86,6 +86,15 @@ $s=explode(',',$ver);
 			a {
 				text-decoration: none;
 			}
+			.excel{
+				background-color: #48e;
+				color: #fff;
+				width: calc(80% - 20px);
+				margin-top: 22px;
+				border: none;
+				padding: 10px;
+				text-decoration: none;
+			}
 		</style>
 </head>
 
@@ -155,8 +164,8 @@ $s=explode(',',$ver);
               </tr>
     <?php
     	error_reporting(0);
-		echo $Cliente=$_POST['filter'];
-		echo $tPago=$_POST['tpago'];
+		$Cliente=$_POST['filter'];
+		$tPago=$_POST['tpago'];
 
         
         $date1 = date("Y-m-d H:i:s", strtotime($_POST['date1']));
@@ -205,6 +214,7 @@ $s=explode(',',$ver);
 
 	?>
 		</table>
+		<a class="excel" href="excel.php?cliente=<?php echo $Cliente?>&pago=<?php echo $tPago?>&date1=<?php echo $date1?>&date2=<?php echo $date2?>">EXPORTAR A EXCEL</a>
 	</div>
 </body>
 </html>
