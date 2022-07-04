@@ -7,18 +7,18 @@ require("../admin/conex.php");
        
         $date1 = date("Y-m-d H:i:s", strtotime($_GET['date1']));
         $date2 = date("Y-m-d H:i:s", strtotime($_GET['date2']));
-header("Content-Type: application/xlsm");
+header("Content-Type: application/xls");
 header("Content-Disposition: attachment; filename=ventas.xls")
 ?>
     	<table class="table table-striped table-hover" width="100%" border="1">
         	<tr>
-            	<th>N°</th>
+            	<th>N&deg;</th>
 				<th>Fecha</th>
                 <th>Cliente</th>
                 <th>Chofer</th>
 				<th>Observaciones</th>
 				<th>Servicio</th>
-                <th>Descripción</th>
+                <th>Descripci&oacute;n</th>
                 <th>Valor</th>
                 <th>Cantidad</th>
                 <th>T. Pago</th>
@@ -52,7 +52,7 @@ header("Content-Disposition: attachment; filename=ventas.xls")
 				echo '
 
 						  <tr>
-							<td><a href="abono.php?var='.$row['id'].'" id="a" name="a">'.$row['id'].'</a></td>
+							<td>'.$row['id'].'</td>
 							<td>'.date("d/m/Y", strtotime($row['date'])).'</td>
 							<td style="text-transform:capitalize; width: auto;">'.$row['cliente'].'</td>
 							<td style="text-transform:capitalize;">'.$row['chofer'].'</td>

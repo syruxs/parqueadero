@@ -128,7 +128,49 @@ $dolar=$dailyIndicators->dolar->valor;
 		$tol =  $Rventas['total'];
 		$vVentas = number_format($tol,0,',','.');
 	}
+	
+	$TotalGeneral = $To + $vdolar + $VDolar + $tol;
+	$TotalGeneral = number_format($TotalGeneral,0,',','.');
+	
+	//Salidas
+	$SqlGas = mysqli_query($conn, "SELECT SUM(total) as total FROM `cueta` WHERE fecha BETWEEN '$date1' AND '$date2'");
+	while($RstGas = mysqli_fetch_array($SqlGas)){
+		$Gastos = $RstGas['total'];
+		$Gastos = number_format($Gastos,0,',','.');
+	}
 	?>
+	<label><b>Mes de 
+		<?php 
+		if($Mes == "01"){
+			$month="ENERO";
+		}if($Mes == "02"){
+			$month="FEBRERO";
+		}if($Mes == "03"){
+			$month="MARZO";
+		}if($Mes == "04"){
+			$month="ABRIL";
+		}if($Mes == "05"){
+			$month="MAYO";
+		}if($Mes == "06"){
+			$month="JUNIO";
+		}if($Mes == "07"){
+			$month="JULIO";
+		}if($Mes == "08"){
+			$month="AGOSTO";
+		}if($Mes == "09"){
+			$month="SEPTIEMBRE";
+		}if($Mes == "10"){
+			$month="OCTUBRE";
+		}if($Mes == "11"){
+			$month="NOVIEMBRE";
+		}if($Mes == "12"){
+			$month="DICIEMBRE";
+		}
+		echo $month;
+		?>
+		
+		
+		</b></label>
 	<hr>
 	<label>Ventas por concepto de Parqueadero : <?php echo '$ '.$V_cancelado.'';?></label>
 	<hr>
@@ -137,6 +179,9 @@ $dolar=$dailyIndicators->dolar->valor;
 	<label>Ventas por concepto de Neumaticos : <?php echo '$ '.$vTotal.' -> USD '.$total.'';?> Credito</label>
 	<hr>
 	<label>Ventas por otro conceptos : <?php echo '$ '.$vVentas.'';?></label>
+	<hr>
+	<label>Total de Ventas : <?php echo '$ '.$TotalGeneral.'';?></label><br>
+	<label>Total de Gastos : <?php echo '$ '.$Gastos.'';?></label>
 </body>
 </html>
 <?php 
