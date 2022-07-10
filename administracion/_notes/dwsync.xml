@@ -29,6 +29,7 @@
 <file name="delete_edith_cliente.php" server="p-s.cl/public_html/" local="133000693621486459" remote="133000693200000000" Dst="1" />
 <file name="abono.php" server="p-s.cl/public_html/" local="133005900908843396" remote="133005900600000000" Dst="1" />
 <file name="save_abono.php" server="p-s.cl/public_html/" local="133005899463101428" remote="133005899400000000" Dst="1" />
-<file name="cierreMes.php" server="p-s.cl/public_html/" local="133013704466989319" remote="133013704200000000" Dst="1" />
+<file name="cierreMes.php" server="p-s.cl/public_html/" local="133018703844910214" remote="133018703400000000" Dst="1" />
 <file name="excel.php" server="p-s.cl/public_html/" local="133013694788180793" remote="133013694600000000" Dst="1" />
+<file name="pdf.php" server="p-s.cl/public_html/" local="133018717530439573" remote="133018717200000000" Dst="1" />
 </dwsync>

@@ -32,7 +32,7 @@ $s=explode(',',$ver);
         <link href="css/style_statistics.css" rel="stylesheet">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 	<title>::: Estadisticas :::</title>
-		<script src="../js/jquery-3.6.0.js"></script> 
+		<script src="js/jquery-3.6.0.js"></script> 
 		<script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/Chart.min.js"></script>
 	</head>
 
@@ -145,7 +145,7 @@ new Chart($grafica, {
 </section>	
 
 <!--<script src="js/graficos.js"></script>-->
-<script src="js/bootstrap.bundle.min.js"></script>
+<!--<script src="js/bootstrap.bundle.min.js"></script>-->
 </body>
 </html>
 <?php 
