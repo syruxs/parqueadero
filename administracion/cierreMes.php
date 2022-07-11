@@ -98,14 +98,15 @@ $dolar=$dailyIndicators->dolar->valor;
 	$date1 = date("$year-$Mes-01 00:00:00", strtotime());
     $date2 = date("$year-$Mes-31 23:59:59", strtotime());
 	
+	//VENTAS DEL PARQUEADDERO
 	$SQL = mysqli_query($conn, "SELECT SUM(cancelado) as cancelado FROM `ingreso` WHERE estado='INACTIVO' and fecha_salida BETWEEN '$date1' AND '$date2'");	
 		
 	while($ROW = mysqli_fetch_array($SQL)){
 		$To = $ROW['cancelado'];
 		$V_cancelado = number_format($To,0,',','.');
 	}
-	
-	$NSQL = mysqli_query($conn, "SELECT SUM(total) as total FROM `ventas` WHERE date BETWEEN '$date1' AND '$date2' and servicio='VENTA NEUMATICOS' and pago='CONTADO'");
+	//VENTA DE NEUMATICOS EN DOLAR AL CONTADO
+	$NSQL = mysqli_query($conn, "SELECT SUM(total) as total FROM `ventas` WHERE date BETWEEN '$date1' AND '$date2' and servicio='VENTA NEUMATICOS' and moneda='DOLAR' and pago='CONTADO'");
 	
 	while($SqlR = mysqli_fetch_array($NSQL)){
 		$Total = $SqlR['total'];
@@ -113,8 +114,8 @@ $dolar=$dailyIndicators->dolar->valor;
 		$VTotal = number_format($vdolar,0,',','.');
 		$TotaL = number_format($Total,0,',','.');
 	}
-	
-	$Nsqli = mysqli_query($conn, "SELECT SUM(total) as total FROM `ventas` WHERE date BETWEEN '$date1' AND '$date2' and servicio='VENTA NEUMATICOS' and pago='CREDITO'");
+	//VENTA DE NEUMATICOS EN DOLAR A CREDITO
+	$Nsqli = mysqli_query($conn, "SELECT SUM(total) as total FROM `ventas` WHERE date BETWEEN '$date1' AND '$date2' and servicio='VENTA NEUMATICOS' and moneda='DOLAR' and pago='CREDITO'");
 	
 	while($SqlRs = mysqli_fetch_array($Nsqli)){
 		$total = $SqlRs['total'];
@@ -122,18 +123,51 @@ $dolar=$dailyIndicators->dolar->valor;
 		$vTotal = number_format($VDolar,0,',','.');
 		$totaL = number_format($total,0,',','.');
 	}
+	//VENTA DE NEUMATICOS EN PESOS CHILENOS AL CONTADO
+	$sql_chileno_contado = mysqli_query($conn, "SELECT SUM(total) as total FROM `ventas` WHERE date BETWEEN '$date1' AND '$date2' and servicio='VENTA NEUMATICOS' and moneda='PESO CHILENO' and pago='CONTADO'");
 	
+	while($SqlContado = mysqli_fetch_array($sql_chileno_contado)){
+		$TotalContado = $SqlContado['total'];
+		$vdolarContado= $TotalContado * $dolar;
+		$VTotalContado = number_format($vdolarContado,0,',','.');
+		$TotaLContado = number_format($TotalContado,0,',','.');
+	}	
+	$SumaNeumaticoPesosContado=$TotalContado + $vdolar;
+	$ContadoDolar=$SumaNeumaticoPesosContado/$dolar;
+	$SumaNeumaticoPesosContado = number_format($SumaNeumaticoPesosContado,0,',','.');
+	$ContadoDolar = number_format($ContadoDolar,0,',','.');
+	//VENTA DE NEUMATICOS EN PESOS CHILENOS AL CREDITO
+	$sql_chileno_credito = mysqli_query($conn, "SELECT SUM(total) as total FROM `ventas` WHERE date BETWEEN '$date1' AND '$date2' and servicio='VENTA NEUMATICOS' and moneda='PESO CHILENO' and pago='CREDITO'");
+	
+	while($SqlCredito = mysqli_fetch_array($sql_chileno_credito)){
+		$TotalCredito = $SqlCredito['total'];
+		$vdolarCredito= $TotalCredito * $dolar;
+		$VTotalCredito = number_format($vdolarCredito,0,',','.');
+		$TotaLCredito = number_format($TotalCredito,0,',','.');
+	}	
+	$SumaNeumaticoPesosCredito=$TotalCredito + $VDolar;
+	$CreditoDolar=$SumaNeumaticoPesosCredito/$dolar;
+	$SumaNeumaticoPesosCredito = number_format($SumaNeumaticoPesosCredito,0,',','.');
+	$CreditoDolar = number_format($CreditoDolar,0,',','.');	
+	//VENTA DE OTROS SERVICIOS A CREDITO
 	$ventas = mysqli_query($conn, "SELECT SUM(total) as total FROM `ventas` WHERE date BETWEEN '$date1' AND '$date2' and servicio!='VENTA NEUMATICOS' and pago='CREDITO'");
 	
 	while($Rventas = mysqli_fetch_array($ventas)){
 		$tol =  $Rventas['total'];
 		$vVentas = number_format($tol,0,',','.');
 	}
+	//VENTA DE OTRSO SERVICIOS AL CONTADO
+	$sale = mysqli_query($conn, "SELECT SUM(total) as total FROM `ventas` WHERE date BETWEEN '$date1' AND '$date2' and servicio!='VENTA NEUMATICOS' and pago='CONTADO'");
+	
+	while($Rsale = mysqli_fetch_array($sale)){
+		$tolSale=  $Rsale['total'];
+		$vSale = number_format($tolSale,0,',','.');
+	}
 	
 	$TotalGeneral = $To + $vdolar + $VDolar + $tol;
 	$TotalGeneral = number_format($TotalGeneral,0,',','.');
 	
-	//Salidas
+	//SALIDAS
 	$SqlGas = mysqli_query($conn, "SELECT SUM(total) as total FROM `cueta` WHERE fecha BETWEEN '$date1' AND '$date2'");
 	while($RstGas = mysqli_fetch_array($SqlGas)){
 		$Gastos = $RstGas['total'];
@@ -176,10 +210,11 @@ $dolar=$dailyIndicators->dolar->valor;
 	<label>Ventas por concepto de Parqueadero : <?php echo '$ '.$V_cancelado.'';?></label>
 	<hr>
 	<label>Valor de dolar de referencia: USD <?php echo $dolar; ?></label><br>
-	<label>Ventas por concepto de Neumaticos : <?php echo '$ '.$VTotal.' -> USD '.$TotaL.'';?> Contado.</label><br>
-	<label>Ventas por concepto de Neumaticos : <?php echo '$ '.$vTotal.' -> USD '.$totaL.'';?> Credito</label>
+	<label>Ventas por concepto de Neumaticos : <?php echo '$ '.$SumaNeumaticoPesosContado.' -> USD '.$ContadoDolar.'';?> Contado.</label><br>
+	<label>Ventas por concepto de Neumaticos : <?php echo '$ '.$SumaNeumaticoPesosCredito.' -> USD '.$CreditoDolar.'';?> Credito</label>
 	<hr>
-	<label>Ventas por otro conceptos : <?php echo '$ '.$vVentas.'';?></label>
+	<label>Ventas por otros conceptos : <?php echo '$ '.$vVentas.'';?> CREDITO</label><br>
+	<label>Ventas por otros conceptos : <?php echo '$ '.$vSale.'';?> CONTADO</label>
 	<hr>
 	<label>Total de Ventas : <?php echo '$ '.$TotalGeneral.'';?></label><br>
 	<label>Total de Gastos : <?php echo '$ '.$Gastos.'';?></label>
@@ -190,11 +225,11 @@ $dolar=$dailyIndicators->dolar->valor;
 		// Obtener una referencia al elemento canvas del DOM
 		const $grafica = document.querySelector("#grafica");
 		// Las etiquetas son las porciones de la gráfica
-		const etiquetas = ["PARQUEADERO", "NEUMATICOS CREDITO", "NEUMATICOS CONTADO", "OTROS SERVICIOS"]
+		const etiquetas = ["PARQUEADERO", "NEUMATICOS CREDITO", "NEUMATICOS CONTADO", "OTROS SERVICIOS CREDITO", "OTROS SERVICIOS CONTADO"]
 		// Podemos tener varios conjuntos de datos. Comencemos con uno
 		const datosIngresos = {
 
-		data: [<?php echo $To;?>, <?php echo $VDolar;?>, <?php echo $vdolar;?>, <?php echo $tol;?>], // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
+		data: [<?php echo $To;?>, <?php echo $VDolar;?>, <?php echo $vdolar;?>, <?php echo $tol;?>, <?php echo $tolSale;?>], // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
 		// Ahora debería haber tantos background colors como datos, es decir, para este ejemplo, 4
 		backgroundColor: [
 			'rgba(163,221,203,0.8)',
