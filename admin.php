@@ -101,6 +101,9 @@ $s=explode(',',$ver);
 					<li rel="administracion/list_cliente.php"><a href="#">Listado de Clientes</a></li>
 				</ul>
 			</li>
+			<li>
+			<a href="divisas.php">DIVISAS</a>
+			</li>
 		</ul>
 	</nav>
 	</div>

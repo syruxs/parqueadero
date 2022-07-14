@@ -60,6 +60,9 @@ $s=explode(',',$ver);
 			<li class="nav-item">
 				<a class="nav-link" aria-current="page" href="admin.php">ADMINISTRACIÓN</a>
 			</li>
+			<li class="nav-item">
+				<a class="nav-link" aria-current="page" href="divisas.php">DIVISAS</a>
+			</li>
 			';
 		}
 		?>

@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Crimson Pro', serif;
+}
+body{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+	height: auto;
+    background-image: url(../img/wallpaperbetter.jpg);
+    position: absolute;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+}
+a {
+	text-decoration: none;
+}
+li {
+	list-style-type: none;
+}
+section {
+	position: relative;
+	top: 60px;
+}
+#container{
+    float: left;
+	background-color: rgba(72, 127, 129, 0.866);
+	top: 100px;
+	width: 300px;
+	height: auto;
+	padding: 5px;
+    display: inline-block;
+	margin: 10px;
+}
+#botton{
+	position: relative;
+	width: 100%;
+	height: 50px;
+    background-color: rgba(17, 99, 136, 0.851);
+	padding: 1em 4px;
+	color: white;
+	text-align: left;
+    border: solid 1px rgba(112, 135, 151, 0.81);
+}
+a #botton:hover{
+    background-color: rgba(14, 77, 105, 0.851);
+	text-decoration: none;
+    border: solid 1px rgba(86, 107, 121, 0.81);
+}
+#seach{
+    float: left;
+	top: 60px;
+	background: #ffffffdd;
+    display: inline-block;
+	margin: 10px;
+	padding: 20px;
+	width: 75%;
+	height: 80vh;
+}
+@media screen and(max-width: 800px){ 
+	#container{
+		width: 100%;
+		height: auto;
+	}
+}
