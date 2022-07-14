@@ -63,6 +63,7 @@ $s=explode(',',$ver);
 					<li rel="administracion/modificar.php"><a href="#">Modificar Expediente</a></li>
 					<li rel="administracion/delete.php"><a href="#">Eliminar Expediente</a></li>
 					<li rel="administracion/ventas.php"><a href="#">Ventas y Resumen</a></li>
+					<li rel="administracion/cierreDia.php"><a href="#">Cierre Dia</a></li>
 				</ul>
 			</li>
 			<li>

@@ -56,6 +56,31 @@ $s=explode(',',$ver);
 	<label>Nombre del Cajero : <?php echo  $nombre; ?></label>
 	<hr>
 	<b><label>Tasa de Cambio</label></b>
+	<marquee>
+	<?php
+		$apiUrl = 'https://mindicador.cl/api';
+		//Es necesario tener habilitada la directiva allow_url_fopen para usar file_get_contents
+		if ( ini_get('allow_url_fopen') ) {
+			$json = file_get_contents($apiUrl);
+		} else {
+			//De otra forma utilizamos cURL
+			$curl = curl_init($apiUrl);
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+			$json = curl_exec($curl);
+			curl_close($curl);
+		}
+ 
+		$dailyIndicators = json_decode($json);
+		echo 'UF es $' . $dailyIndicators->uf->valor.'&nbsp;&nbsp;';
+		echo 'Dólar observado $' . $dailyIndicators->dolar->valor.'&nbsp;&nbsp;';
+		echo 'Dólar acuerdo $' . $dailyIndicators->dolar_intercambio->valor.'&nbsp;&nbsp;';
+		echo 'Euro $' . $dailyIndicators->euro->valor.'&nbsp;&nbsp;';
+		//echo 'El valor actual del IPC es ' . $dailyIndicators->ipc->valor;
+		echo 'UTM $' . $dailyIndicators->utm->valor.'&nbsp;&nbsp;';
+		//echo 'El valor actual del IVP es $' . $dailyIndicators->ivp->valor;
+		//echo 'El valor actual del Imacec es ' . $dailyIndicators->imacec->valor;
+	?>
+	</marquee>
 		<div class="table-responsive" style="font-size: 12px;">
 			<table class="table table-striped table-hover">
 				<tr>
@@ -72,10 +97,10 @@ $s=explode(',',$ver);
 							echo '
 								<form action="saveTasaCambio.php" method="post">
 									<tr>
-										<td>'.$n.'</td>
+										<td>'.$n.'<input type="hidden" value="'.$rst['id'].'" name="id"></td>
 										<td>'.$rst['divisa'].'</td>
-										<td><input type="text" value="" name="venta" autocomplete="off" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required></td>
-										<td><input type="text" value="" name="venta" autocomplete="off" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required></td>
+										<td><input type="text" value="'.$rst['compra'].'" name="compra" autocomplete="off" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required></td>
+										<td><input type="text" value="'.$rst['venta'].'" name="venta" autocomplete="off" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required></td>
 										<td><button class="btn btn-primary" type="submit">GUARDAR</button</td>
 									</tr>
 								</form>

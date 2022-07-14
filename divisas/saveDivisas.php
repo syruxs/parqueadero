@@ -25,7 +25,7 @@ if($divisa == ""){
 		echo "<script type=\"text/javascript\">alert(\"Esta divisa ya se encuenta en el sistema.\");</script>";
 		echo "<script type=\"text/javascript\">history.back(-1);</script>";
 	}else{
-		$save="INSERT INTO `divisas` (`divisa`) VALUES ('$divisa')";
+		$save="INSERT INTO `divisas` (`divisa`, `compra` , `venta`) VALUES ('$divisa', '0' , '0')";
 		$insert=mysqli_query($conn, $save);
 		echo "<script type=\"text/javascript\">alert(\"Los datos se han guardado correctamente.\");</script>";
 		include('createDivisa.php');
