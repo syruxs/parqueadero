@@ -95,6 +95,9 @@ $s=explode(',',$ver);
 				padding: 10px;
 				text-decoration: none;
 			}
+			.excel:hover {
+				box-shadow: 3px 0px 30px rgba(000,000,000, 1);
+			}
 		</style>
 </head>
 

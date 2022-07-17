@@ -29,37 +29,39 @@ while($RstMoro=mysqli_fetch_array($ResultadoMorosidad)){
 	$DateEntrada=date("d-m-Y H:i:s", strtotime($RstMoro['fecha_ingreso']));
 	$DateSalida=date("d-m-Y H:i:s", strtotime($RstMoro['fecha_salida']));
 	
-}
-
-if(mysqli_num_rows($ResultadoMorosidad)!=0){
-    echo "<script type=\"text/javascript\">alert(\"El semiremolque presenta MOROSIDAD de $ ".$Cancelado." Entre las Fecha ".$DateEntrada." y la Fecha ".$DateSalida." ¡Por favor regularice su Deuda!\");</script>";
+}if($tracto == ""){
 	echo "<script type=\"text/javascript\">history.back(-1);</script>";
 }else {
 
-	$consulta_semi="SELECT * FROM `ingreso` where semi='$semi' and 	estado='ACTIVO'";
-	$result=mysqli_query($conn, $consulta_semi);
-
-	if(mysqli_num_rows($result)!=0){
-		echo "<script type=\"text/javascript\">alert(\"Existe un espediente con el mismo Semi-remolque ya ingresado.\");</script>";
+	if(mysqli_num_rows($ResultadoMorosidad)!=0){
+		echo "<script type=\"text/javascript\">alert(\"El semiremolque presenta MOROSIDAD de $ ".$Cancelado." Entre las Fecha ".$DateEntrada." y la Fecha ".$DateSalida." ¡Por favor regularice su Deuda!\");</script>";
 		echo "<script type=\"text/javascript\">history.back(-1);</script>";
-	}else{
-		$consulta_tracto="SELECT * FROM `ingreso` where tracto='$tracto' and estado='ACTIVO'";
-		$rst_tracto=mysqli_query($conn, $consulta_tracto);
-		if(mysqli_num_rows($rst_tracto)!=0){
-			echo "<script type=\"text/javascript\">alert(\"Existe un espediente con el mismo Tracto ya ingresado.\");</script>";
+	}else {
+
+		$consulta_semi="SELECT * FROM `ingreso` where semi='$semi' and 	estado='ACTIVO'";
+		$result=mysqli_query($conn, $consulta_semi);
+
+		if(mysqli_num_rows($result)!=0){
+			echo "<script type=\"text/javascript\">alert(\"Existe un espediente con el mismo Semi-remolque ya ingresado.\");</script>";
 			echo "<script type=\"text/javascript\">history.back(-1);</script>";
 		}else{
-
-			$regis_ingreso = "INSERT INTO `ingreso` (`tracto`, `semi`, `tipo`, `carga`, `nombre`, `telefono`, `observaciones`, `fecha_ingreso`, `usuario_ingreso`, `estado`) VALUES ('$tracto', '$semi', '$tipo', '$carga', '$name', '$fone', '$obs', '$date_in', '$user', '$estado')"; 
-			echo "<script type=\"text/javascript\">alert(\"Los datos se ha guardado correctamente.\");</script>";
-			$insert=mysqli_query($conn, $regis_ingreso);
-
-			if(!$insert){
-			   echo mysql_error()."Error !!";
+			$consulta_tracto="SELECT * FROM `ingreso` where tracto='$tracto' and estado='ACTIVO'";
+			$rst_tracto=mysqli_query($conn, $consulta_tracto);
+			if(mysqli_num_rows($rst_tracto)!=0){
+				echo "<script type=\"text/javascript\">alert(\"Existe un espediente con el mismo Tracto ya ingresado.\");</script>";
+				echo "<script type=\"text/javascript\">history.back(-1);</script>";
 			}else{
-				echo "<script type=\"text/javascript\">alert(\"Los Datos se han guardado correctamente.\");</script>";
-				include('home.php');
-		   }
+
+				$regis_ingreso = "INSERT INTO `ingreso` (`tracto`, `semi`, `tipo`, `carga`, `nombre`, `telefono`, `observaciones`, `fecha_ingreso`, `usuario_ingreso`, `estado`) VALUES ('$tracto', '$semi', '$tipo', '$carga', '$name', '$fone', '$obs', '$date_in', '$user', '$estado')"; 
+				$insert=mysqli_query($conn, $regis_ingreso);
+
+				if(!$insert){
+				   echo mysql_error()."Error !!";
+				}else{
+					echo "<script type=\"text/javascript\">alert(\"Los Datos se han guardado correctamente.\");</script>";
+					include('home.php');
+			   }
+			}
 		}
 	}
 }

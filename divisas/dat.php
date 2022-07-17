@@ -17,14 +17,14 @@ $divisa=$_POST['div'];
 $operacion=$_POST['op'];
 
 if($operacion == 'COMPRA'){
-	$z=mysqli_query($conn, "SELECT * FROM `divisas` WHERE id='$divisa'");
+	$z=mysqli_query($conn, "SELECT * FROM `divisas` WHERE divisa='$divisa'");
 		while($y=mysqli_fetch_array($z)){
 			$valor=$y['compra'];
 		}
 echo "<script type=\"text/javascript\">var tasacambio = document.getElementById('cambio');
 tasacambio.value='".$valor."';</script>";
 }if($operacion == 'VENTA'){
-	$z=mysqli_query($conn, "SELECT * FROM `divisas` WHERE id='$divisa'");
+	$z=mysqli_query($conn, "SELECT * FROM `divisas` WHERE divisa='$divisa'");
 		while($y=mysqli_fetch_array($z)){
 			$valor=$y['venta'];
 		}

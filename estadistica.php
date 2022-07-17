@@ -89,7 +89,7 @@ $s=explode(',',$ver);
     </form> 
     <br>
     <div class="table-responsive">
-            <table class="table table-striped table-hover" style="background-color: white; color: rgb(110, 108, 108);">
+            <table class="table table-striped table-hover" style="background-color: white; color: rgb(110, 108, 108); font-size: 13px;">
                 <tr>
                     <th>N°</th>
                     <th>Tracto</th>

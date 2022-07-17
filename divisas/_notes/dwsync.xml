@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="compraVenta.php" server="p-s.cl/public_html/" local="133023112057313996" remote="133023111600000000" Dst="1" />
+<file name="compraVenta.php" server="p-s.cl/public_html/" local="133024963266740832" remote="133024963200000000" Dst="1" />
 <file name="createDivisa.php" server="p-s.cl/public_html/" local="133022346865214707" remote="133022346600000000" Dst="1" />
-<file name="saveDivisas.php" server="p-s.cl/public_html/" local="133022826378204835" remote="133022826000000000" Dst="1" />
+<file name="saveDivisas.php" server="p-s.cl/public_html/" local="133024836457873953" remote="133024836000000000" Dst="1" />
 <file name="tasaCambio.php" server="p-s.cl/public_html/" local="133022846693333624" remote="133022846400000000" Dst="1" />
 <file name="saveTasaCambio.php" server="p-s.cl/public_html/" local="133022839397295400" remote="133022839200000000" Dst="1" />
 <file name="datos.php" server="p-s.cl/public_html/" local="133023077400000000" remote="133023077400000000" Dst="1" />
-<file name="dat.php" server="p-s.cl/public_html/" local="133023101459866034" remote="133023101400000000" Dst="1" />
+<file name="dat.php" server="p-s.cl/public_html/" local="133024948364131404" remote="133024948200000000" Dst="1" />
+<file name="saveCompraVenta.php" server="p-s.cl/public_html/" local="133024962251566786" remote="133024962000000000" Dst="1" />
+<file name="divisa.php" server="p-s.cl/public_html/" local="133024948499434436" remote="133024948200000000" Dst="1" />
+<file name="movimientos.php" server="p-s.cl/public_html/" local="133025046389299176" remote="133025046000000000" Dst="1" />
 </dwsync>

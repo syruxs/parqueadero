@@ -32,6 +32,37 @@ $s=explode(',',$ver);
         <link href="../css/bootstrap.min.css" rel="stylesheet">
     	<title></title>
 		<script src="../js/jquery-3.6.0.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function(){
+				$("#formulario").submit(function () {
+				if($("#divi").val() == "0") {
+					alert("Por favor seleccione una divisa");
+						$("#divi").focus();
+					return false;
+				}
+				if($("#oper").val() == "a") {
+					alert("Por favor selecciona una operación");
+					$("#oper").focus();
+				return false;
+				}
+				if($("#monto").val().length < 1) {
+					alert("Por favor ingrese el monto.");
+					$("#monto").focus();
+				return false;
+				}
+				if($("#cambio").val().length < 1) {
+					alert("Por favor ingrese el cambio.");
+					$("#cambio").focus();
+				return false;
+				}
+				if($("#total").val().length < 1) {
+					alert("Por favor ingrese el valor correcto");
+					$("#total").focus();
+				return false;
+				}
+			});
+		});
+		</script>
 		<style>
 			body{
 				padding: 20px;
@@ -41,6 +72,7 @@ $s=explode(',',$ver);
 <body>
 	<label>Nombre del Cajero : <?php echo  $nombre; ?></label>
 	<hr>
+	<form action="saveCompraVenta.php" method="post" name="formulario" id="formulario">
 	<table width="100%" border="0" cellpadding="6" cellspacing="6">
 		<tr>
 			<td>
@@ -53,7 +85,7 @@ $s=explode(',',$ver);
 						$d=mysqli_query($conn, "SELECT * FROM `divisas` ORDER BY divisa ASC");
 							while($r=mysqli_fetch_array($d)){
 								echo '
-									<option value="'.$r['id'].'">'.$r['divisa'].'</option>
+									<option value="'.$r['divisa'].'">'.$r['divisa'].'</option>
 								';
 							}
 					?>
@@ -75,13 +107,13 @@ $s=explode(',',$ver);
 				<label>Monto</label>
 			</td>
 			<td>
-				<input type="text" class="form-control" name="monto" id="monto" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="8" required>
+				<input type="number" class="form-control" name="monto" id="monto" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required>
 			</td>
 			<td>
 				<label>Tipo de Cambio</label>
 			</td>
 			<td>
-				<input type="text" class="form-control" name="cambio" id="cambio" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="8" required>
+				<input type="number" class="form-control" name="cambio" id="cambio" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"  required>
 			</td>
 		</tr>
 		<tr>
@@ -89,7 +121,7 @@ $s=explode(',',$ver);
 				<label>Cliente</label>
 			</td>
 			<td colspan="3">
-				<input type="text" class="form-control">
+				<input type="text" class="form-control" style="text-transform:capitalize;" name="cliente" id="cliente">
 			</td>
 		</tr>
 		<tr>
@@ -102,27 +134,55 @@ $s=explode(',',$ver);
 				<label>Total</label>
 			</td>
 			<td>
-				<input type="text" class="form-control" name="total" id="total" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" maxlength="12" required>
+				<input type="number" class="form-control" name="total" id="total" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"  required>
 			</td>
-			<td></td>
-			<td></td>
+			<td>Saldo Caja</td>
+			<td><input type="text" class="form-control" value="" name="caja" id="caja" readonly></td>
 		</tr>
 	</table>
 	<hr>
 	<br>
-	<button class="btn btn-primary" type="submit">GUARDAR</button>
+ 	<button class="btn btn-primary" type="submit">GUARDAR</button>
+	</form>
 	<script type="text/javascript">
 	$(document).ready(function(){
 		$('#oper').change(function(){
-			tipoCambio();
+			if($('#divi').val() == "0"){
+				alert('Primero seleccione una divisa.');
+				$('#divi').focus();
+			}else{
+			tipoCambio();	
+			}
+		});
+		$('#divi').change(function(){
+			divisas();
 		});
 		$('#monto').change(function(){
-			mont = $('#monto').val();
-			can = $('#cambio').val();
+			mont = +$('#monto').val();
+			can = +$('#cambio').val();
+			to = mont * can;
+			$('#total').val(to);
+			if(+$('#monto').val() > +$('#caja').val()){
+				alert('El saldo en caja no es suficiente.');
+			}
+		});
+		$('#cambio').change(function(){
+			mont = +$('#monto').val();
+			can = +$('#cambio').val();
 			to = mont * can;
 			$('#total').val(to);
 		});
-	});
+		function divisas(){
+			$.ajax({
+				type: "POST", 
+				url: "divisa.php",
+				data: {di: $('#divi').val()},
+				success: function(d){
+					$('#caja').html(d);
+				}
+			});
+		}
+		
 		function tipoCambio(){
 			$.ajax({
 			  type: "POST",
@@ -133,6 +193,7 @@ $s=explode(',',$ver);
 				}
 			});
 		}
+	});
 	</script>
 </body>
 </html>
