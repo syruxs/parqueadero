@@ -84,11 +84,11 @@ $s=explode(',',$ver);
 	<ul>
 		<li rel="divisas/compraVenta.php"><a href="#"><div id="botton">COMPRA / VENTA</div></a></li>
 		<li rel="divisas/movimientos.php"><a href="#"><div id="botton">MOVIMIENTOS</div></a></li>
-	<a href="#"><div id="botton">INVENTARIO</div></a>
+		<li rel="divisas/inventario.php"><a href="#"><div id="botton">INVENTARIO</div></a></li>
 		<li rel="divisas/tasaCambio.php"><a href="#"><div id="botton">TASA DE CAMBIO</div></a></li>
-	<a href="#"><div id="botton">INGRESO / EGRESO</div></a>
+		<li rel="divisas/ingresoEgreso.php"><a href="#"><div id="botton">INGRESO / EGRESO</div></a></li>
 		<li rel="divisas/createDivisa.php"><a href="#"><div id="botton">CREAR DIVISA</div></a></li>
-	<a href="#"><div id="botton">INVENTARIO X CAJERO</div></a>
+		<li rel=""><a href="#"><div id="botton">INVENTARIO X CAJERO</div></a></li>
 	<a href="#"><div id="botton">HISTORIAL MOVIMIENTO</div></a>
 	</ul>
 </div>

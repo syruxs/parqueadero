@@ -10,4 +10,7 @@
 <file name="saveCompraVenta.php" server="p-s.cl/public_html/" local="133024962251566786" remote="133024962000000000" Dst="1" />
 <file name="divisa.php" server="p-s.cl/public_html/" local="133024948499434436" remote="133024948200000000" Dst="1" />
 <file name="movimientos.php" server="p-s.cl/public_html/" local="133025046389299176" remote="133025046000000000" Dst="1" />
+<file name="inventario.php" server="p-s.cl/public_html/" local="133025583614289407" remote="133025583600000000" Dst="1" />
+<file name="ingresoEgreso.php" server="p-s.cl/public_html/" local="133025689715281950" remote="133025689200000000" Dst="1" />
+<file name="savemovimiento.php" server="p-s.cl/public_html/" local="133025684217921047" remote="133025683800000000" Dst="1" />
 </dwsync>
