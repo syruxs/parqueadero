@@ -56,22 +56,10 @@ $s=explode(',',$ver);
 </head>
 <body>
 	<h3 class="animate__animated animate__backInLeft" id="titulo">Cierre de Día</h3>
-	<hr>
-	<form action="cierreDia.php" method="post">
-	<table width="100%" border="0" cellpadding="4" cellspacing="4">
-		<tr>
-			<td><label>Fecha y Hora de Incio :</label></td>
-			<td><input type="datetime-local" class="form-control" name="date1" id="date1" ></td>
-			<td><label>Fecha y Hora de Termino :</label></td>
-			<td><input type="datetime-local" class="form-control" name="date2" id="date2" ></td>
-			<td><button class="btn btn-primary" type="submit">BUSCAR</button></td>
-		</tr>
-	</table>
-	</form>
-	<hr>
+	<br>
 		<?php
-			$date1 = date("Y-m-d H:i:s", strtotime($_POST['date1']));
-        	$date2 = date("Y-m-d H:i:s", strtotime($_POST['date2']));
+			$date1 = date("Y-m-d H:i:s", strtotime($_GET['date1']));
+        	$date2 = date("Y-m-d H:i:s", strtotime($_GET['date2']));
 		
 			$sql = mysqli_query($conn, "SELECT * FROM `ingreso` where estado='INACTIVO' and fecha_salida BETWEEN '$date1' AND '$date2' ORDER BY id ASC");
 		
@@ -135,12 +123,13 @@ $s=explode(',',$ver);
 		// fin de gastos
 		?>
 		<label>Rango de Cierre entre la fecha <?php echo $date_in; ?> hasta la fecha : <?php echo $date_out;?></label>
+		<hr>
 		<table width="80%" border="0" cellpadding="4"  cellspacing="4" class="table table-hover">
 			<tr>
-				<th width="50%" align="center">
+				<th width="50%">
 					<label>PARQUEADERO</label>
 				</th>
-				<th width="50%" align="center">
+				<th width="50%">
 					<label>NEUMATICOS</label>
 				</th>
 			</tr>
@@ -169,6 +158,8 @@ $s=explode(',',$ver);
 				</td>
 			</tr>
 		</table>
+	<br>
+	<hr>
 		<label>Cierre en $ : <?php 
 			$par=trim(str_replace(array('-','.'), '', $V_cancelado));
 			$neu=trim(str_replace(array('-','.'), '', $SumaNeumaticoPesosContado));
@@ -180,10 +171,24 @@ $s=explode(',',$ver);
 			echo $TotaL;
 			?>
 		</label>
-		<hr>
-		<a href="closepdf.php?date1=<?php echo $date1;?>&date2=<?php echo $date2;?>" target="_blank"><button class="btn btn-primary" type="button">IMPRIMIR PDF</button></a>
 </body>
 </html>
-<?php 
-ob_end_flush(); 
+<?php
+$html=ob_get_clean();
+
+require_once'../dompdf/autoload.inc.php';
+use Dompdf\Dompdf;
+$dompdf = new Dompdf();
+
+$options = $dompdf->getOptions();
+$options->set(array('isRemoteEnabled' => true));
+$dompdf->setOptions($options);
+
+$dompdf->loadHtml($html);
+
+$dompdf->setPaper('letter');
+
+$dompdf->render();
+
+$dompdf->stream("CierreDia.pdf", array("Attachment"=> false));
 ?>
