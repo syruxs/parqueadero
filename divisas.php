@@ -89,7 +89,7 @@ $s=explode(',',$ver);
 		<li rel="divisas/ingresoEgreso.php"><a href="#"><div id="botton">INGRESO / EGRESO</div></a></li>
 		<li rel="divisas/createDivisa.php"><a href="#"><div id="botton">CREAR DIVISA</div></a></li>
 		<li rel=""><a href="#"><div id="botton">INVENTARIO X CAJERO</div></a></li>
-	<a href="#"><div id="botton">HISTORIAL MOVIMIENTO</div></a>
+		<li rel="divisas/historyMov.php"><a href="#"><div id="botton">HISTORIAL MOVIMIENTO</div></a></li>
 	</ul>
 </div>
 <div id="seach">
